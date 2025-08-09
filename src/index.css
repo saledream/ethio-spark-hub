@@ -1,42 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Ethiopian-inspired design system with flag colors and cultural motifs
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Ethiopian flag-inspired color palette */
+    --ethiopian-green: 120 85% 25%;        /* Deep Ethiopian green */
+    --ethiopian-green-light: 120 60% 45%;  /* Lighter green variant */
+    --ethiopian-yellow: 45 95% 55%;        /* Golden yellow */
+    --ethiopian-yellow-light: 45 85% 70%;  /* Lighter yellow */
+    --ethiopian-red: 0 85% 45%;            /* Ethiopian red */
+    --ethiopian-red-light: 0 75% 60%;      /* Lighter red */
+    
+    /* Coffee ceremony inspired warm tones */
+    --coffee-brown: 25 35% 25%;
+    --coffee-light: 25 25% 60%;
+    --cream: 35 25% 92%;
+    
+    /* Core theme colors */
+    --background: 35 25% 98%;
+    --foreground: 25 35% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 35 25% 98%;
+    --card-foreground: 25 35% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 35 25% 98%;
+    --popover-foreground: 25 35% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 120 85% 25%;                 /* Ethiopian green as primary */
+    --primary-foreground: 35 25% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 45 95% 55%;                /* Ethiopian yellow as secondary */
+    --secondary-foreground: 25 35% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 35 20% 90%;
+    --muted-foreground: 25 25% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 0 85% 45%;                    /* Ethiopian red as accent */
+    --accent-foreground: 35 25% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 85% 45%;
+    --destructive-foreground: 35 25% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 35 20% 85%;
+    --input: 35 20% 90%;
+    --ring: 120 85% 25%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+    
+    /* Custom gradients */
+    --gradient-ethiopian: linear-gradient(135deg, hsl(var(--ethiopian-green)), hsl(var(--ethiopian-yellow)), hsl(var(--ethiopian-red)));
+    --gradient-primary: linear-gradient(135deg, hsl(var(--ethiopian-green)), hsl(var(--ethiopian-green-light)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--ethiopian-green) / 0.9), hsl(var(--ethiopian-yellow) / 0.8));
+    --gradient-card: linear-gradient(145deg, hsl(var(--cream)), hsl(var(--background)));
+    
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,33 +82,39 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark theme with Ethiopian colors */
+    --background: 25 35% 8%;
+    --foreground: 35 25% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 25 35% 10%;
+    --card-foreground: 35 25% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 25 35% 10%;
+    --popover-foreground: 35 25% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 120 60% 45%;                 /* Lighter green for dark mode */
+    --primary-foreground: 25 35% 8%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 45 85% 65%;                /* Lighter yellow for dark mode */
+    --secondary-foreground: 25 35% 8%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 25 25% 15%;
+    --muted-foreground: 35 20% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 0 75% 60%;                    /* Lighter red for dark mode */
+    --accent-foreground: 25 35% 8%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 25 35% 8%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 25 25% 20%;
+    --input: 25 25% 15%;
+    --ring: 120 60% 45%;
+    
+    /* Dark mode gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--ethiopian-green) / 0.8), hsl(var(--ethiopian-yellow) / 0.6));
+    --gradient-card: linear-gradient(145deg, hsl(25 35% 12%), hsl(var(--background)));
+    
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -100,6 +132,57 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  /* Ethiopian cultural patterns */
+  .ethiopian-pattern {
+    background-image: 
+      radial-gradient(circle at 20% 20%, hsl(var(--ethiopian-yellow) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, hsl(var(--ethiopian-red) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 60%, hsl(var(--ethiopian-green) / 0.1) 0%, transparent 50%);
+  }
+  
+  /* Hero gradient background */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  /* Card gradient */
+  .card-gradient {
+    background: var(--gradient-card);
+  }
+  
+  /* Smooth transitions */
+  .smooth-transition {
+    transition: var(--transition-smooth);
+  }
+  
+  .bounce-transition {
+    transition: var(--transition-bounce);
+  }
+  
+  /* Hover effects */
+  .hover-lift {
+    @apply smooth-transition hover:-translate-y-2 hover:shadow-2xl;
+  }
+  
+  .hover-glow {
+    @apply smooth-transition hover:shadow-lg hover:shadow-primary/25;
+  }
+  
+  /* Text gradients */
+  .text-ethiopian-gradient {
+    background: var(--gradient-ethiopian);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
